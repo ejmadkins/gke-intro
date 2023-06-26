@@ -16,7 +16,13 @@
 namespace: foo
 
 resources:
-  - ../../base
+  - reposync.yaml
+  - gsa.yaml
+  - gsa-wi.yaml
+  - ksa.yaml
+  - role.yaml
+  - rolebinding.yaml
+  - namespace.yaml
 
 patches:
   - target:
@@ -28,7 +34,7 @@ patches:
         value: ns-reconciler-foo
   - target:
       kind: Namespace
-      name: default
+      name: foo
     patch: |-
       - op: replace
         path: /metadata/name
