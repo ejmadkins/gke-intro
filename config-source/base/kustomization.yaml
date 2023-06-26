@@ -19,6 +19,7 @@ bases:
   - foo/
   - bar/
 resources:
+  - reposync.yaml
   - pod-creator-clusterrole.yaml
   - pod-creator-rolebinding.yaml
   - policy-essentials-v2022/no-secrets-as-env-vars.yaml

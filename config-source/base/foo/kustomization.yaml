@@ -13,9 +13,61 @@
 # limitations under the License.
 
 # [START anthosconfig_multi_environments_kustomize_config_source_base_foo_kustomization] 
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+namespace: foo
+
 resources:
-- namespace.yaml
-- serviceaccount.yaml
+  - ../../base
+
+patches:
+  - target:
+      kind: RoleBinding
+      name: tenant-sync
+    patch: |-
+      - op: replace
+        path: /subjects/0/name
+        value: ns-reconciler-foo
+  - target:
+      kind: Namespace
+      name: default
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: foo
+      - op: replace
+        path: /metadata/annotations/cnrm.cloud.google.com~1project-id
+        value: ejmadkins-gke-intro2506
+  - target:
+      kind: RepoSync
+      name: repo-sync
+    patch: |-
+      - op: replace
+        path: /spec/git/repo
+        value: https://github.com/edadkins-google/acm-multi-repo-foo.git
+  - target:
+      kind: IAMServiceAccount
+      name: default
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: foo
+  - target:
+      kind: ServiceAccount
+      name: ksa
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: ksa-wi
+      - op: replace
+        path: /metadata/annotations/iam.gke.io~1gcp-service-account
+        value: foo@ejmadkins-gke-intro2506.iam.gserviceaccount.com      
+  - target:
+      kind: IAMPolicy
+      name: gsa-wi
+    patch: |-
+      - op: replace
+        path: /spec/resourceRef/name
+        value: foo
+      - op: replace
+        path: /spec/bindings/0/members/0
+        value: serviceAccount:ejmadkins-gke-intro2506.svc.id.goog[foo/ksa-wi]
 # [END anthosconfig_multi_environments_kustomize_config_source_base_foo_kustomization] 
