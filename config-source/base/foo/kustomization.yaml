@@ -42,7 +42,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/git/repo
-        value: https://github.com/edadkins-google/acm-multi-repo-foo.git
+        value: https://github.com/ejmadkins/gke-intro-tenant-foo.git
   - target:
       kind: IAMServiceAccount
       name: default
