@@ -15,7 +15,7 @@
 # [START anthosconfig_multi_environments_kustomize_config_source_overlays_prod_kustomization] 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-resources:
+bases:
 - ../../base
 patches:
 # ServiceAccount - make name unique per environ 
