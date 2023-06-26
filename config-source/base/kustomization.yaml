@@ -18,6 +18,7 @@ kind: Kustomization
 bases:
   - foo/
   - bar/
+  - kcc/
 resources:
   - pod-creator-clusterrole.yaml
   - pod-creator-rolebinding.yaml
