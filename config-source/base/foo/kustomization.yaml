@@ -17,8 +17,8 @@ namespace: foo
 
 resources:
   - reposync.yaml
-  - gsa.yaml
-  - gsa-wi.yaml
+  # - gsa.yaml
+  # - gsa-wi.yaml
   - ksa.yaml
   - role.yaml
   - rolebinding.yaml
