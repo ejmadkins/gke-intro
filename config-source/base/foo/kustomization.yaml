@@ -65,7 +65,7 @@ patches:
         value: ksa-wi
       - op: replace
         path: /metadata/annotations/iam.gke.io~1gcp-service-account
-        value: foo@ejmadkins-gke-intro2506.iam.gserviceaccount.com      
+        value: cnrmsa-cluster-krm-demo@ejmadkins-gke-intro2506.iam.gserviceaccount.com      
   - target:
       kind: IAMPolicy
       name: gsa-wi
